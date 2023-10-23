@@ -13,6 +13,6 @@ const userforumdata = [
 
 
 const seedUserForums = () => User.bulkCreate(userforumdata);
-module.exports = seedUserForum;
+module.exports = seedUserForums;
   
   
