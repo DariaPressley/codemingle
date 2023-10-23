@@ -1,4 +1,6 @@
-[
+const { Post } = require('../models');
+
+const postdata = [
     {
       "title": "Asking for feedback.",
       "code_block": "",
@@ -16,3 +18,9 @@
       "likes": "5"
     }
   ]
+
+
+const seedPosts = () => Post.bulkCreate(postdata);
+module.exports = seedPost;
+  
+  

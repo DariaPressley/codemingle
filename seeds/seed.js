@@ -1,11 +1,11 @@
 const sequelize = require('../config/connection');
 const { Comment, Forum, Post, User, UserForum } = require('../models');
 
-const seedComments = require('./comment-seeds.json');
-const seedForums = require('./forum-seeds.json');
-const seedPosts = require('./post-seeds.json');
-const seedUsers = require('./user-seeds.json');
-const seedUserForums = require('./userForum-seeds.json');
+const seedComments = require('./comment-seeds');
+const seedForums = require('./forum-seeds');
+const seedPosts = require('./post-seeds');
+const seedUsers = require('./user-seeds');
+const seedUserForums = require('./userForum-seeds');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
