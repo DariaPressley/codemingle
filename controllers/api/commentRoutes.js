@@ -3,7 +3,7 @@ const { Comment, Post } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 // Get all comments 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     Comment.findAll()
         .then((commentData) => res.json(commentData))
         .catch((err) => {
