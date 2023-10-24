@@ -14,8 +14,8 @@ const seedDatabase = async () => {
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
 
-  await seedForums();
-  console.log('\n----- FORUMS SEEDED -----\n');
+  // await seedForums();
+  // console.log('\n----- FORUMS SEEDED -----\n');
 
   await seedPosts();
   console.log('\n----- POSTS SEEDED -----\n');
@@ -23,8 +23,8 @@ const seedDatabase = async () => {
   await seedComments();
   console.log('\n----- COMMENTS SEEDED -----\n');
 
-  await seedUserForums();
-  console.log('\n----- USER FORUMS SEEDED -----\n');
+  // await seedUserForums();
+  // console.log('\n----- USER FORUMS SEEDED -----\n');
 
   process.exit(0);
 };

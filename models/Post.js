@@ -14,7 +14,7 @@ Post.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     code_block: {
         type: DataTypes.STRING,
@@ -27,14 +27,6 @@ Post.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id',
-        unique: false
-      },
-    },
-    forum_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'forum',
         key: 'id',
         unique: false
       },

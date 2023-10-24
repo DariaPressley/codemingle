@@ -1,16 +1,16 @@
+let code_block = "";
+
 async function newPostHandler(event) {
     event.preventDefault();
   
-    const code_block = document.querySelector('.file').value;
     const text = document.querySelector('.textarea').value;
-    const user_name = document.querySelector('#user').value;
+
   
-    const response = await fetch(`/`, {
+    const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({
         code_block,
         text,
-        user_name,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -24,12 +24,26 @@ async function newPostHandler(event) {
     }
   }
   
-  document
-    .addEventListener('submit', newPostHandler);
+  document.querySelector("#submitButton").addEventListener('click', newPostHandler);
 
 
 var cancelButton = document.getElementById('cancelButton');
     cancelButton.addEventListener('click', function() {
     window.location.href = 'home.html'; 
     });
+
+var myWidget = cloudinary.createUploadWidget({
+        cloudName: 'dwymtagmc', 
+        uploadPreset: 'tjj6snc6'}, (error, result) => { 
+          if (!error && result && result.event === "success") { 
+            console.log('Done! Here is the image info: ', result.info); 
+            code_block = result.info.url
+          }
+        }
+      )
+      
+      document.getElementById("upload_widget").addEventListener("click", function(event){
+        event.preventDefault();
+          myWidget.open();
+        }, false);
   
