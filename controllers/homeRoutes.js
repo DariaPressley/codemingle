@@ -22,5 +22,10 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
+
+router.get('/post', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  res.render('create-post');
+});
   
 module.exports = router;
