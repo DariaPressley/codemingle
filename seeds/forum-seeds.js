@@ -10,7 +10,7 @@ const forumdata = [
 ];
 
 const seedForums = () => Comment.bulkCreate(forumdata);
-module.exports = seedForum;
+module.exports = seedForums;
 
 
   
