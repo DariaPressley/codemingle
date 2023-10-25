@@ -1,9 +1,15 @@
-// add a comment
-async function commentFormHandler(event) {
+async function checkButton(event) {
     event.preventDefault();
-    // console.log(event);
-    const text = document.querySelector('.textarea').value.trim();
-    const post_id = parseInt(event.target.getAttribute("data-postid"))
+    if (event.target.classList.contains('btn-submit')) {
+        commentFormHandler(event.target);
+    } else if (event.target.classList.contains('delete')) {
+        deleteFormHandler(event.target);
+    }
+};
+
+async function commentFormHandler(button) {
+    const post_id = parseInt(button.getAttribute("data-postid"));
+    const text = document.querySelector('#new-comment-'+post_id).value.trim();
     console.log(text,post_id);
     if (text) {
         const response = await fetch('/api/comments', {
@@ -25,13 +31,9 @@ async function commentFormHandler(event) {
     }
 }
 
-document.querySelector('#submitButton').addEventListener('click', commentFormHandler);
-
-
 // delete comment
-async function deleteFormHandler(event) {
-    event.preventDefault();
-    commentToDelete = event.target.parentElement;
+async function deleteFormHandler(button) {
+    commentToDelete = button.parentElement;
     const response = await fetch(`/api/comments/${commentToDelete.dataset.id}`, {
         method: 'DELETE'
     });
@@ -43,4 +45,4 @@ async function deleteFormHandler(event) {
     }
 }
 
-document.querySelector('.delete').addEventListener('click', deleteFormHandler);
+document.addEventListener('click', checkButton)
