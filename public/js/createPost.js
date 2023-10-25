@@ -33,6 +33,8 @@ var myWidget = cloudinary.createUploadWidget({
   if (!error && result && result.event === "success") {
     console.log('Done! Here is the image info: ', result.info);
     code_block = result.info.url
+    const previewImage = document.getElementById ("previewImage");
+    previewImage.setAttribute ("src", code_block)
   }
 }
 )
