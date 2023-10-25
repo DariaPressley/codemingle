@@ -16,9 +16,10 @@ async function newPostHandler(event) {
       'Content-Type': 'application/json',
     },
   });
-
   if (response.ok) {
-    document.location.push('/');
+    //document.location.push();
+    document.location.replace('/');
+
   } else {
     alert('Failed to add post');
   }
