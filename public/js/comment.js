@@ -45,4 +45,4 @@ async function deleteFormHandler(button) {
     }
 }
 
-document.addEventListener('click', checkButton)
+document.querySelector('#posts').addEventListener('click', checkButton)
