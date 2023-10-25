@@ -13,19 +13,20 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['text'],
+          attributes: ['text', 'user_id', 'id'],
         },
       ],
     });
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log(posts);
     // TODO: get data for homepage
     // THEN: render homepage
+    console.log(req.session.user_id);
     res.render('homepage', { 
       posts,
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in, 
+      userId: req.session.user_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -52,6 +53,7 @@ router.get('/profile', withAuth, (req, res) => {
 });
 
 router.get('/profile/:id', withAuth, async (req, res) => {
+  try {
   const userData = await User.findByPk(req.params.id, {
     attributes: {exclude: ['password']},
     include: [
@@ -59,11 +61,14 @@ router.get('/profile/:id', withAuth, async (req, res) => {
       {model: Comment}
     ]
   });
-  const userSubmissions = userData.get({ plain: true });
+  const user = userData.get({ plain: true });
   res.render('profile', {
-    userSubmissions,
+    user,
     logged_in: req.session.logged_in
   })
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
   
 module.exports = router;
