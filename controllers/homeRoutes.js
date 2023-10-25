@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -41,17 +41,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/post', (req, res) => {
+router.get('/post', withAuth, (req, res) => {
   // If the user is already logged in, redirect the request to another route
   res.render('create-post');
 });
 
-router.get('/profile', (req, res) => {
+router.get('/profile', withAuth, (req, res) => {
   // If the user is already logged in, redirect the request to user profile
   res.redirect(`/profile/${req.session.user_id}`);
 });
 
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', withAuth, async (req, res) => {
   const userData = await User.findByPk(req.params.id, {
     attributes: {exclude: ['password']},
     include: [
