@@ -10,6 +10,11 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4">
+            {{#if post.user_id}}
+            <a href="profile/{{post.user_id}}">{{post.user.name}}</a>
+            {{else}}
+            Deleted user
+            {{/if}}
             </p> 
           </div>
         </div>
@@ -38,7 +43,6 @@
           <div class="level-left">
             <div class="level-item">
               <a class="button is-info" data-postid={{post.id}} id="submitButton">Comment</a>
-              {{!-- <a class="button is-info" id="deleteButton">Delete Comment</a> --}}
             </div>
           </div>
         </nav>
