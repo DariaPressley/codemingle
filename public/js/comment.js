@@ -31,8 +31,8 @@ document.querySelector('#submitButton').addEventListener('click', commentFormHan
 // delete comment
 async function deleteFormHandler(event) {
     event.preventDefault();
-
-    const response = await fetch(`/api/comments/${comment.id}`, {
+    commentToDelete = event.target.parentElement;
+    const response = await fetch(`/api/comments/${commentToDelete.dataset.id}`, {
         method: 'DELETE'
     });
 
