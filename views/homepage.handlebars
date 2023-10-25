@@ -10,24 +10,24 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4">
-              {{post.user.name}}
+              {{post.user.name}} 
             </p> 
           </div>
         </div>
         <div class="content"> 
           {{post.text}}
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-heart-fill" viewBox="0 0 16 16">
+        <svg class="likes" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-heart-fill" viewBox="0 0 16 16">
           <path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
         </svg>
         {{post.likes}}
-        <p>Comments:</p>
+        <hr class="line">
+        <p class="comments">Comments:</p>
         {{#each post.comments as |comment|}}
-        <p class="comment-text">{{comment.text}}</p>
-        {{/each}}
+        <p class="comment-text">{{comment.text}} <button class="delete"></button></p>
+        {{/each}}   
     </div>
     </div>
- 
     <article class="media" style="max-width: 20em;">
       <div class="media-content">
         <div class="field">
@@ -39,7 +39,7 @@
           <div class="level-left">
             <div class="level-item">
               <a class="button is-info" data-postid={{post.id}} id="submitButton">Comment</a>
-              <a class="button is-info" id="deleteButton"><strong>Delete Comment</strong></a>
+              <a class="button is-info" id="deleteButton">Delete Comment</a>
             </div>
           </div>
         </nav>
