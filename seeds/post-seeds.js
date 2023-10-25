@@ -3,7 +3,7 @@ const { Post } = require('../models');
 const postdata = [
     {
       "title": "Asking for feedback.",
-      "code_block": "",
+      "code_block": "/Users/janeadams/Desktop/ucla-bootcamp/projects/codemingle/images/codemingle_screenshot.png",
       "text": "Would love feedback on this!",
       "user_id": 1,
       "likes": 7

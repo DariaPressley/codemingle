@@ -1,13 +1,15 @@
 async function commentFormHandler(event) {
     event.preventDefault();
-
-    const text = document.querySelector('textarea[class="textarea"]').value.trim();
-
+    console.log(event);
+    const text = document.querySelector('.textarea').value.trim();
+    const post_id = parseInt(event.target.getAttribute("data-postid"))
+    console.log(text,post_id);
     if (text) {
         const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({
-                text
+                text,
+                post_id,
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -17,9 +19,9 @@ async function commentFormHandler(event) {
         if (response.ok) {
             document.location.reload();
         } else {
-            alert(response.statusText);
+            alert('Failed to add comment');
         }
     }
 }
 
-document.querySelector('.textarea').addEventListener('submit', commentFormHandler);
+document.querySelector('#submitButton').addEventListener('click', commentFormHandler);
