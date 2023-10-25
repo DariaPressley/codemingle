@@ -36,13 +36,13 @@
       <div class="media-content">
         <div class="field">
           <p class="control">
-           <textarea class="textarea" placeholder="Add a comment..."></textarea>
+           <textarea class="textarea" id="new-comment-{{post.id}}" placeholder="Add a comment..."></textarea>
           </p>
         </div>
         <nav class="level">
           <div class="level-left">
             <div class="level-item">
-              <a class="button is-info" data-postid={{post.id}} id="submitButton">Comment</a>
+              <button class="button is-info btn-submit" data-postid={{post.id}}>Comment</button>
             </div>
           </div>
         </nav>
