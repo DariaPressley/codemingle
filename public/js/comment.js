@@ -1,5 +1,4 @@
 async function checkButton(event) {
-    event.preventDefault();
     if (event.target.classList.contains('btn-submit')) {
         commentFormHandler(event.target);
     } else if (event.target.classList.contains('delete')) {

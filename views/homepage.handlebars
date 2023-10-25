@@ -1,6 +1,7 @@
-{{#each posts as |post|}}
-  <div id="posts">
+<div id="posts">
+    {{#each posts as |post|}}
     <div class="card" style="max-width: 20em;">
+
       <div class="card-image">
         <figure class="image is-4by3">
           <img src="{{post.code_block}}" alt="Placeholder image">
@@ -9,9 +10,10 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
+            <h5 class="card-title">{{post.title}}</h5>
             <p class="title is-4">
             {{#if post.user_id}}
-            <a href="profile/{{post.user_id}}">{{post.user.name}}</a>
+            <a href="/profile/{{post.user_id}}">{{post.user.name}}</a>
             {{else}}
             Deleted user
             {{/if}}
@@ -30,7 +32,7 @@
         {{#each post.comments as |comment|}}
         <p class="comment-text" data-id='{{comment.id}}'><strong>{{comment.user.name}}</strong>&nbsp {{comment.text}} {{{check_id ../../userId comment.user_id}}}</p>
         {{/each}}   
-    </div>
+      </div>
     </div>
     <article class="media" style="max-width: 20em;">
       <div class="media-content">
@@ -42,7 +44,7 @@
         <nav class="level">
           <div class="level-left">
             <div class="level-item">
-              <button class="button is-info btn-submit" data-postid={{post.id}}>Comment</button>
+              <button class="button is-info btn-submit" id="commentButton" data-postid={{post.id}}>Comment</button>
             </div>
           </div>
         </nav>
@@ -50,5 +52,5 @@
     </article>
     {{/each}}
     <script src="./js/comment.js"></script>
-  </div>
+</div>
 

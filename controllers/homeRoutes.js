@@ -49,7 +49,9 @@ router.get('/login', (req, res) => {
 
 router.get('/post', withAuth, (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  res.render('create-post');
+  res.render('create-post', {
+    logged_in: req.session.logged_in,
+  });
 });
 
 router.get('/profile', withAuth, (req, res) => {
@@ -62,8 +64,10 @@ router.get('/profile/:id', withAuth, async (req, res) => {
   const userData = await User.findByPk(req.params.id, {
     attributes: {exclude: ['password']},
     include: [
-      {model: Post},
-      {model: Comment}
+      {
+        model: Post,
+        include: [{model:Comment, attribute: ['id']}]
+      },
     ]
   });
   const user = userData.get({ plain: true });

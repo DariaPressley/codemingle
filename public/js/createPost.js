@@ -2,13 +2,15 @@ let code_block = "";
 
 async function newPostHandler(event) {
   event.preventDefault();
-
-  const text = document.querySelector('.textarea').value;
-
+  const title = document.querySelector('#post-title').value.trim();
+  console.log(title);
+  const text = document.querySelector('.textarea').value.trim();
+  
 
   const response = await fetch(`/api/posts`, {
     method: 'POST',
     body: JSON.stringify({
+      title,
       code_block,
       text,
     }),

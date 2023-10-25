@@ -66,6 +66,14 @@
     border: rgb(217, 217, 217);
 }
 
+#commentButton {
+    color: rgb(152, 61, 152);
+    background-color: rgb(217, 217, 217); 
+    border: rgb(217, 217, 217);
+    font-weight: bold;
+    margin-left: 60px;
+}
+
 #submitButton {
     color: rgb(152, 61, 152);
     background-color: rgb(217, 217, 217); 
@@ -145,4 +153,13 @@
 
 .label {
     margin-left: 125px;
+}
+
+
+.delete {
+    display: none;
+}
+  
+.comment-text:hover > .delete {
+    display: inline;
 }
