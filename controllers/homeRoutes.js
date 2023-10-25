@@ -45,5 +45,25 @@ router.get('/post', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   res.render('create-post');
 });
+
+router.get('/profile', (req, res) => {
+  // If the user is already logged in, redirect the request to user profile
+  res.redirect(`/profile/${req.session.user_id}`);
+});
+
+router.get('/profile/:id', async (req, res) => {
+  const userData = await User.findByPk(req.params.id, {
+    attributes: {exclude: ['password']},
+    include: [
+      {model: Post},
+      {model: Comment}
+    ]
+  });
+  const userSubmissions = userData.map((submission) => submission.get({ plain: true }));
+  res.render('profile', {
+    userSubmissions,
+    logged_in: req.session.logged_in
+  })
+});
   
 module.exports = router;
