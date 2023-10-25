@@ -146,3 +146,12 @@
 .label {
     margin-left: 125px;
 }
+
+
+.delete {
+    display: none;
+}
+  
+.comment-text:hover > .delete {
+    display: inline;
+}
