@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
     if (req.session) {
         Comment.create({
                 text: req.body.text,
-                user_id: req.session.user_id,
+                // user_id: req.session.user_id, - fix once the login is done
+                user_id: 1,
                 post_id: req.body.post_id
             })
             .then(commentData => {
