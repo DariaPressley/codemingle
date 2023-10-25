@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Comment, Post } = require('../../models');
-// const withAuth = require('../../utils/auth');
+
 
 // /comments endpoint
 // Get all comments 
@@ -15,19 +15,15 @@ router.get('/', (req, res) => {
 
 // Create new comment
 router.post('/', (req, res) => {
-    console.log(req.body,"add comment route",req.session);
     if (req.session) {
+        console.log(req.session.user_id);
         Comment.create({
                 text: req.body.text,
-                // user_id: req.session.user_id, - fix once the login is done
-                user_id: 1,
+                user_id: req.session.user_id,
                 post_id: req.body.post_id
             })
-            .then(commentData => {
-                console.log("Added Comment", commentData)
-                res.json(commentData)
-
-            }).catch(err => {
+            .then(commentData => res.json(commentData))
+            .catch(err => {
                 console.log(err);
                 res.status(400).json(err);
             });
