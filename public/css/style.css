@@ -73,6 +73,12 @@
     border: rgb(217, 217, 217);
 }
 
+#upload_widget {
+    color: rgb(152, 61, 152);
+    background-color: rgb(217, 217, 217); 
+    border: rgb(217, 217, 217);
+}
+
 .card {
     margin-top: 50px;
 }
