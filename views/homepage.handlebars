@@ -24,7 +24,7 @@
         <hr class="line">
         <p class="comments">Comments:</p>
         {{#each post.comments as |comment|}}
-        <p class="comment-text">{{comment.text}} <button class="delete"></button></p>
+        <p class="comment-text">{{comment.text}} {{{check_id ../../userId comment.user_id}}}</p>
         {{/each}}   
     </div>
     </div>
