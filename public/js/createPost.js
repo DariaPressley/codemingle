@@ -2,7 +2,7 @@ let code_block = "";
 
 async function newPostHandler(event) {
   event.preventDefault();
-  const title = document.querySelector('#post-title');
+  const title = document.querySelector('#post-title').value.trim();
   console.log(title);
   const text = document.querySelector('.textarea').value.trim();
   
