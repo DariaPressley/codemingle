@@ -59,7 +59,7 @@ router.get('/profile/:id', withAuth, async (req, res) => {
       {model: Comment}
     ]
   });
-  const userSubmissions = userData.map((submission) => submission.get({ plain: true }));
+  const userSubmissions = userData.get({ plain: true });
   res.render('profile', {
     userSubmissions,
     logged_in: req.session.logged_in
