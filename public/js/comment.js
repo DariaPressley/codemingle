@@ -1,6 +1,7 @@
+// add a comment
 async function commentFormHandler(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     const text = document.querySelector('.textarea').value.trim();
     const post_id = parseInt(event.target.getAttribute("data-postid"))
     console.log(text,post_id);
@@ -25,3 +26,21 @@ async function commentFormHandler(event) {
 }
 
 document.querySelector('#submitButton').addEventListener('click', commentFormHandler);
+
+
+// delete comment
+async function deleteFormHandler(event) {
+    event.preventDefault();
+
+    const response = await fetch(`/api/comments/${comment.id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+}
+
+document.querySelector('.delete').addEventListener('click', deleteFormHandler);
