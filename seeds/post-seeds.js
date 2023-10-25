@@ -6,11 +6,11 @@ const postdata = [
       "code_block": "",
       "text": "Would love feedback on this!",
       "user_id": 1,
-      "likes": 5
+      "likes": 7
     },
     {
       "title": "Look what I made!",
-      "code_block": "",
+      "code_block": './assets/photos/weather-dashboard.png',
       "text": "Just finished making a weather dashboard.",
       "user_id": 2,
       "likes": 5
@@ -20,5 +20,4 @@ const postdata = [
 
 const seedPosts = () => Post.bulkCreate(postdata);
 module.exports = seedPosts;
-  
   

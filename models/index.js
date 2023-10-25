@@ -4,17 +4,33 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 // const UserForum = require('./UserForum');
 
-// Posts are created by Single User
-// If a user is deleted their posts remain
-Post.hasOne(User, {
+Post.belongsTo(User, {
     foreignKey: 'user_id',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
 });
 
-// User can make many posts
-User.hasMany(Post, {
-    foreignKey: 'user_id',
+Post.hasMany(Comment, {
+    foreignKey: 'post_id',
+    onDelete: 'CASCADE',
 });
+
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+
+
+// Posts are created by Single User
+// If a user is deleted their posts remain
+// Post.hasOne(User, {
+//     foreignKey: 'user_id',
+//     onDelete: 'SET NULL',
+// });
+
+// User can make many posts
+// User.hasMany(Post, {
+//     foreignKey: 'user_id',
+// });
 
 // // Each post is stored in 1 forum 
 // // If a forum is deleted its posts are also deleted
@@ -30,15 +46,11 @@ User.hasMany(Post, {
 
 // A comment is a reply to a single post
 // If a post is deleted all of its comments are deleted
-Comment.hasOne(Post, {
-    foreignKey: 'post_id',
-    onDelete: 'CASCADE'
-})
+// Comment.hasOne(Post, {
+//     foreignKey: 'post_id',
+//     onDelete: 'CASCADE'
+// })
 
-// Each post can have multiple comments
-Post.hasMany(Comment, {
-    foreignKey: 'post_id',
-})
 
 // // Users select which forums they would like to view
 // User.belongsToMany(Forum, {
@@ -53,3 +65,5 @@ Post.hasMany(Comment, {
 // });
 
 module.exports = {User, Post, Comment,};
+
+
