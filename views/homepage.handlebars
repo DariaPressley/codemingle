@@ -10,10 +10,10 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <h5 class="card-title">{{post.title}}</h5>
-            <p class="title is-4">
+            <h5 class="card-title title is-4">{{post.title}}</h5>
+            <p class="title is-6">
             {{#if post.user_id}}
-            <a href="/profile/{{post.user_id}}">{{post.user.name}}</a>
+            <a href="/profile/{{post.user_id}}">Created by {{post.user.name}}</a>
             {{else}}
             Deleted user
             {{/if}}
