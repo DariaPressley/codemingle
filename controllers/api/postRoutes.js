@@ -15,6 +15,19 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      order: [['created_at', 'DESC']],
+      include: [
+      ],
+    });
+    res.json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.delete('/:id', async (req, res) => {
   try {
     const newPost = await Post.destroy({
