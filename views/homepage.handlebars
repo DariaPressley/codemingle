@@ -45,6 +45,9 @@
           <div class="level-left">
             <div class="level-item">
               <button class="button is-info btn-submit" id="commentButton" data-postid={{post.id}}>Comment</button>
+              {{#delete_post user_id ../userId}}
+              <button class="button is-info btn-submit" id="deleteButton" data-postid={{post.id}}>Delete</button>
+              {{/delete_post}}
             </div>
           </div>
         </nav>

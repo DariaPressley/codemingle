@@ -44,4 +44,20 @@ async function deleteFormHandler(button) {
     }
 }
 
+async function deletePostHandler(button) {
+    postDelete = button.target;
+    console.log (postDelete)
+    const response = await fetch(`/api/posts/${postDelete.dataset.postid}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+}
+
+document.querySelector('#deleteButton').addEventListener('click', deletePostHandler)
 document.querySelector('#posts').addEventListener('click', checkButton)
+
