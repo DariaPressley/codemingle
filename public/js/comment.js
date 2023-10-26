@@ -3,6 +3,8 @@ async function checkButton(event) {
         commentFormHandler(event.target);
     } else if (event.target.classList.contains('delete')) {
         deleteFormHandler(event.target);
+    } else if (event.target.classList.contains('btn-delete')) {
+        deletePostHandler(event.target);
     }
 };
 
@@ -45,9 +47,7 @@ async function deleteFormHandler(button) {
 }
 
 async function deletePostHandler(button) {
-    postDelete = button.target;
-    console.log (postDelete)
-    const response = await fetch(`/api/posts/${postDelete.dataset.postid}`, {
+    const response = await fetch(`/api/posts/${button.dataset.postid}`, {
         method: 'DELETE'
     });
 
@@ -58,6 +58,5 @@ async function deletePostHandler(button) {
     }
 }
 
-document.querySelector('#deleteButton').addEventListener('click', deletePostHandler)
 document.querySelector('#posts').addEventListener('click', checkButton)
 
