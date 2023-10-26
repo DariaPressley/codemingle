@@ -5,7 +5,12 @@ module.exports = {
     },
     check_id: (id1, id2) => {
       if (id1 === id2){
-        return '<button class="delete"></button>';
+        return '<button class="delete"></button>'; 
+      }
+    },
+    delete_post: function (id1, id2, options) {
+      if (id1 === id2) {
+        return options.fn(this); 
       }
     }
   };
