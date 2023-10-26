@@ -43,7 +43,7 @@ async function deleteFormHandler(button) {
         alert(response.statusText);
     }
 }
-
+//delete post
 async function deletePostHandler(button) {
     postDelete = button.target;
     console.log (postDelete)
