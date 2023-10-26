@@ -126,11 +126,10 @@
 }
 
 #createPost {
-    margin-top: 50px;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     align-items: center;  
-    margin-left: 660px;
     color: black;
 }
 
